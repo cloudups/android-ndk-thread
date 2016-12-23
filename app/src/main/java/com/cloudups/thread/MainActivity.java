@@ -25,10 +25,23 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_create_thread).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createThread();
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        sem();
+                    }
+                }).start();
             }
         });
     }
 
     private native void createThread();
+
+    private native void mutex();
+
+    private native void cond();
+
+    private native void sem();
 }
